@@ -46,15 +46,10 @@ class EthRPCClient():
         k = keccak.new(digest_bits=256)
         sig_bytes = bytes(func_sig, 'utf-8')
         k.update(sig_bytes)
-        print(k.hexdigest()[0:8])
         return k.hexdigest()[0:8]
 
     def call(self, contract: str, function: str, args: List = [], return_type = "string"):
-        print(function)
-        print(type(function))
-        print(args)
-        print(type(args))
-        
+       
         func_selector = EthRPCClient.get_func_selector(function)
         encoded_args = EthRPCClient.encode_args(function, args)
 
